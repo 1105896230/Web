@@ -38,6 +38,15 @@
         -->
         <property name="hibernate.hbm2ddl.auto">update</property>
 
+
+        <!--指定hibernate操作数据库的隔离级别
+           1|2|4|8
+           1 读未提交
+           2 读已提交
+           4 课重复读
+           8 串行化
+        -->
+        <property name="hibernate.connection.isolation"></property>
         <!-- 引入orm元数据 填写src路径下-->
         <mapping resource="com/fmt/hibernate/Customer.cfg.xml"/>
     </session-factory>
