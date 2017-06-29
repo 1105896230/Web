@@ -3,10 +3,22 @@
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
+<!--hibernate主配置文件-->
 <hibernate-configuration>
     <session-factory>
+        <!--五个必选配置
+
+        hibernate.connection.driver_class：驱动
+        hibernate.connection.url：数据库url
+        hibernate.connection.username：用户名
+        hibernate.connection.password：用户名密码
+        hibernate.dialect：数据库方言
+                           不同数据库中的，sql语法略有不同，指定方言可以让hibernate框架在生成sql语句时，针对数据库的方言生成
+                           sql99标准：DDL/DML/DCL
+
+        -->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql:///hibernate</property>
+        <property name="hibernate.connection.url">jdbc:mysql:///hibernate?useUnicode=true&amp;characterEncoding=utf8</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">123456</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -17,7 +29,16 @@
 
 
 
+        <!--
+          ##auto schema export 自动导出表结构，自动建表
+          hibernate.hbm2ddl.auto  create   自动建表，每次框架运行都会建立新的表，以前的表将会被覆盖，表数据会丢失（开发测试使用)
+          hibernate.hbm2ddl.auto  create-drop  自动建表，每次框架运行都会将表删除（开发环境测试还用)
+          hibernate.hbm2ddl.auto  update (推荐使用)      自动生成表，如果存在不会再生成，如果表有变动，自动更新表（不会生成任何数据)
+          hibernate.hbm2ddl.auto  validate    校验不主动生成表，每次启动会校验数据库中表是否正确，校验失败抛出异常（举例删除了表就会有异常）
+        -->
         <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- 引入orm元数据 填写src路径下-->
         <mapping resource="com/fmt/hibernate/Customer.cfg.xml"/>
     </session-factory>
 </hibernate-configuration>

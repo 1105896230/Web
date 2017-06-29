@@ -3,12 +3,34 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping>
-    <class name="com.fmt.hibernate.Customer" table="cst_customer">
+<!-- 配置与表实体对象的关系-->
+<!-- package属性,填写一个包名.在元素内部凡是需要书写完整类名的书写，可以直接写-->
+<hibernate-mapping package="com.fmt.hibernate">
+    <!--
+      class元素:配置实体与表的对应关系
+      name:完整类名
+      table：表名
+    -->
+    <class name="Customer" table="cst_customer">
+        <!-- id:配置主键映射
+         name:填写主键对应属性名
+         column:填写表中的主键列明
+        -->
         <id name="cust_id" column="cust_id">
+            <!-- 主键生成策略-->
             <generator class="native"></generator>
         </id>
-        <property name="cust_name" column="cust_name"></property>
+        <!--property 除id之外的普通属性映射
+           name：属性名
+           column(可选）：填写；列名默认值是属性名
+           type(可选） 填写属性的类型。hibernate会自动检测试题的属性类型
+                       每个类型有三种添发：java类型|hibernate类型|数据库类型
+           not-null(可选）:配置该属性(列)不为空，默认值为false
+           length（可选):配置数据库中列的长度，默认值;当前数据库中的最大长度
+        -->
+        <property name="cust_name" column="cust_name" not-null="true">
+            <!--<column name="cust_name" sql-type="varchar"></column>-->
+        </property>
         <property name="cust_source" column="cust_source"></property>
         <property name="cust_industry" column="cust_industry"></property>
         <property name="cust_level" column="cust_level"></property>

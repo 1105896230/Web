@@ -9,6 +9,8 @@ import org.junit.Test;
 /**
  * Created by 林其望 on 2017/6/29.
  */
+
+
 public class Demo {
 
     @Test
@@ -21,7 +23,7 @@ public class Demo {
         Transaction transaction = session.beginTransaction();
 //        -------------------------------------------
         Customer c=new Customer();
-        c.setCust_name("3213");
+        c.setCust_name("百度");
         c.setCust_level("5");
         session.save(c);
 
