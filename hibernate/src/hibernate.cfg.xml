@@ -53,5 +53,6 @@
         <property name="hibernate.current_session_context_class">thread</property>
         <!-- 引入orm元数据 填写src路径下-->
         <mapping resource="com/fmt/hibernate/Customer.cfg.xml"/>
+        <mapping resource="com/fmt/hibernate/LinkMan.cfg.xml"/>
     </session-factory>
 </hibernate-configuration>

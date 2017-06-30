@@ -1,5 +1,8 @@
 package com.fmt.hibernate;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Customer {
 	
 	/*
@@ -24,6 +27,7 @@ public class Customer {
 	private String cust_linkman;
 	private String cust_phone;
 	private String cust_mobile;
+	private Set<LinkMan> linkMens=new HashSet<>();
 	public Long getCust_id() {
 		return cust_id;
 	}
@@ -72,7 +76,17 @@ public class Customer {
 	public void setCust_mobile(String cust_mobile) {
 		this.cust_mobile = cust_mobile;
 	}
+
+	public Set<LinkMan> getLinkMens() {
+		return linkMens;
+	}
+
+	public void setLinkMens(Set<LinkMan> linkMens) {
+		this.linkMens = linkMens;
+	}
+
 	@Override
+
 	public String toString() {
 		return "Customer [cust_id=" + cust_id + ", cust_name=" + cust_name + "]";
 	}

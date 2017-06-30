@@ -45,5 +45,17 @@
         <property name="cust_linkman" column="cust_linkman"></property>
         <property name="cust_phone" column="cust_phone"></property>
         <property name="cust_mobile" column="cust_mobile"></property>
+
+        <!--集合，一对多关系，在配置文件中配置-->
+        <!--
+          name是添集合属性名
+          key元素 中column 填写外键列名
+          class属性 与我关联的对象完整类名
+        -->
+        <set name="linkMens">
+            <!--指定外键列明-->
+            <key column="lkm_cust_id"></key>
+            <one-to-many class="LinkMan"/>
+        </set>
     </class>
 </hibernate-mapping>
