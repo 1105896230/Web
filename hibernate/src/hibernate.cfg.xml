@@ -41,12 +41,16 @@
 
         <!--指定hibernate操作数据库的隔离级别
            1|2|4|8
-           1 读未提交
-           2 读已提交
-           4 课重复读
-           8 串行化
+           1 读未提交（脏读，不可重复读，幻|虚读）
+           2 读已提交(不可重复读，幻|虚读)
+           4 课重复读(幻|虚读)
+           8 串行化（没有问题 但是效率太低）
         -->
-        <property name="hibernate.connection.isolation"></property>
+        <property name="hibernate.connection.isolation">4</property>
+        
+        
+        <!-- 指定session与当前线程绑定-->
+        <property name="hibernate.current_session_context_class">thread</property>
         <!-- 引入orm元数据 填写src路径下-->
         <mapping resource="com/fmt/hibernate/Customer.cfg.xml"/>
     </session-factory>
