@@ -10,11 +10,13 @@ import org.hibernate.criterion.Projections;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by 林其望 on 2017/6/30.
  */
 public class SqlDemo {
+
 
 
     @Test
@@ -69,6 +71,7 @@ public class SqlDemo {
         sqlQuery.addEntity(Customer.class);
         List list = sqlQuery.list();
         System.out.print(list);
+
 
 
         transaction.commit();

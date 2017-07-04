@@ -3,7 +3,8 @@ package com.fmt.hibernate;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Customer {
+public class
+Customer {
 	
 	/*
 	 * CREATE TABLE `cst_customer` (

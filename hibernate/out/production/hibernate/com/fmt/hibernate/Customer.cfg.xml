@@ -26,7 +26,7 @@
                  uuid：产生随机字符串，主键类型必须是string类型
                  assigned:自然主键生成策略，hibernate不会管理主键值，由开发人员自己录入，如果不设置id 就会报错
             -->
-            <generator class="assigned"></generator>
+            <generator class="native"></generator>
         </id>
         <!--property 除id之外的普通属性映射
            name：属性名
@@ -45,5 +45,32 @@
         <property name="cust_linkman" column="cust_linkman"></property>
         <property name="cust_phone" column="cust_phone"></property>
         <property name="cust_mobile" column="cust_mobile"></property>
+
+        <!--集合，一对多关系，在配置文件中配置-->
+        <!--
+          name是添集合属性名
+          key元素 中column 填写外键列名
+          class属性 与我关联的对象完整类名
+        -->
+        <!--
+          级联操作：cascade
+             save-update:级联保存更新
+             delete：级联删除
+             all上述都有
+        -->
+        <!--
+            inverse属性:配置关系是否维护。
+            true:customer不维护
+            false（默认值):customer维护关系
+
+            inverse属性：性能优化。提高关系维护的性能。
+            原则：无论怎么放弃，总有一方必须要维护关系，
+            一对多关系中：一的一方放弃，多的一方不能放弃
+        -->
+        <set name="linkMens" cascade="all" inverse="true" >
+            <!--指定外键列明-->
+            <key column="lkm_cust_id"></key>
+            <one-to-many class="LinkMan"/>
+        </set>
     </class>
 </hibernate-mapping>
