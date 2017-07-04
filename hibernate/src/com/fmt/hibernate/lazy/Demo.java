@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -35,10 +36,13 @@ public class Demo {
 
         String hql = "from Customer ";
         Query query = session.createQuery(hql);
+
         List<Customer> list = query.list();
 
-        for(Customer c:list){
-            System.out.println(c);
+
+        for (Customer c:list)
+        {
+            System.out.println(c.getLinkMens());
         }
 
         transaction.commit();

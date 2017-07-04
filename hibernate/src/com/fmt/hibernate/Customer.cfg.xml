@@ -11,7 +11,7 @@
       name:完整类名
       table：表名
     -->
-    <class name="Customer" table="cst_customer" lazy="true" batch-size="2">
+    <class name="Customer" table="cst_customer" lazy="true" >
         <!-- id:配置主键映射
          name:填写主键对应属性名
          column:填写表中的主键列明
@@ -84,7 +84,7 @@
         <!--
         batch-size:抓取数据3条
         -->
-        <set name="linkMens" batch-size="3">
+        <set name="linkMens" batch-size="4">
             <!--指定外键列明-->
             <key column="lkm_cust_id"></key>
             <one-to-many class="LinkMan"/>
