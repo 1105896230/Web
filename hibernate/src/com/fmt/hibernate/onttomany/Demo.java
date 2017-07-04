@@ -71,8 +71,9 @@ public class Demo {
     public void fun4(){
         Session session = HibernateUtils.openSession();
         Transaction transaction = session.beginTransaction();
-        Customer customer = session.get(Customer.class, 18l);
-        session.delete(customer);
+        Customer customer = session.load(Customer.class, 18l);
+        System.out.print(customer);
+//        session.delete(customer);
         transaction.commit();
         session.close();
     }

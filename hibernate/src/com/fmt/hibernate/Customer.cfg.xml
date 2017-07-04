@@ -11,7 +11,7 @@
       name:完整类名
       table：表名
     -->
-    <class name="Customer" table="cst_customer">
+    <class name="Customer" table="cst_customer" lazy="true" batch-size="2">
         <!-- id:配置主键映射
          name:填写主键对应属性名
          column:填写表中的主键列明
@@ -67,7 +67,24 @@
             原则：无论怎么放弃，总有一方必须要维护关系，
             一对多关系中：一的一方放弃，多的一方不能放弃
         -->
-        <set name="linkMens" cascade="all" inverse="true" >
+        <!--
+           lazy属性：决定延迟加载
+           true(默认值),懒加载
+           false:立即加载
+           extra:这种配置和配置为lazy=true是一样的，但它的好处在于调用size/contains等方法时，并不查询整个集合的数据，而是发送一条sql语句来处理，只有真正在使用时才全部去查询整个集合
+
+
+
+           fetch属性:决定加载策略，使用什么类型的sql语句加载集合数据
+           select(默认值）：单表查询加载
+           join：使用多表查询加载集合（如果设置了join，查询是一次性的，lazy设置无效）
+           subselect：使用子查询加载集合
+
+        -->
+        <!--
+        batch-size:抓取数据3条
+        -->
+        <set name="linkMens" batch-size="3">
             <!--指定外键列明-->
             <key column="lkm_cust_id"></key>
             <one-to-many class="LinkMan"/>

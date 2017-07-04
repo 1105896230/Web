@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -98,6 +99,39 @@ public class HqlDemo {
 //        Object o = query.uniqueResult();//接受唯一的查询
         //根据HQL语句创建查询对象
         //根据查询对象获取查询结果
+
+        transaction.commit();
+        session.close();
+    }
+
+    @Test
+    public void fun5(){
+        Session session= HibernateUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+
+//        //内链接
+//        String hql="from Customer c inner join c.linkMens";
+//        Query query = session.createQuery(hql);
+//        List<Object[]> list = query.list();
+//        for (Object[] arr:list){
+//            System.out.println(Arrays.toString(arr));
+//        }
+
+//        //迫切内链接
+//        String hql="from Customer c inner join fetch c.linkMens";
+//        Query query = session.createQuery(hql);
+//        List<Customer> list = query.list();
+//        for (Customer arr:list){
+//            System.out.println(arr);
+//        }
+
+        String hql="from Customer c left join c.linkMens";
+        Query query = session.createQuery(hql);
+        List<Object[]> list = query.list();
+        for (Object[] arr:list){
+            System.out.println(Arrays.toString(arr));
+        }
+
 
         transaction.commit();
         session.close();

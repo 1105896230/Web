@@ -86,13 +86,12 @@ Customer {
 		this.linkMens = linkMens;
 	}
 
+
 	@Override
-
 	public String toString() {
-		return "Customer [cust_id=" + cust_id + ", cust_name=" + cust_name + "]";
+		return "Customer{" +
+				"cust_id=" + cust_id +
+				", cust_name='" + cust_name + '\'' +
+				'}';
 	}
-	
-	
-	
-
 }

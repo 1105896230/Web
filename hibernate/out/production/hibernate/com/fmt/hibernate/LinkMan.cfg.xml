@@ -20,7 +20,17 @@
         <property name="lkm_position"  ></property>
 
         <!-- 多对1关系:不能放弃委会关系，外键字段就在多第一方-->
-         <many-to-one name="customer" column="lkm_cust_id" class="Customer" cascade="all" >
+        <!--
+        fetch
+          select:使用 单表查询
+          join：多表查询
+        lazy：决定加载时机
+             false:立即加载
+             proxy:有customer对象的中配置文件的lazy是什么属性就是什么属性
+
+
+         -->
+         <many-to-one name="customer" column="lkm_cust_id" class="Customer" cascade="all" fetch="select" lazy="false">
         </many-to-one>
     </class>
 </hibernate-mapping>

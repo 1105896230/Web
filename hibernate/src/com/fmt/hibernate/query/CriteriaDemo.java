@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
@@ -95,6 +96,22 @@ public class CriteriaDemo {
         Long number = (Long) criteria.uniqueResult();
 
         System.out.println(number);
+        transaction.commit();
+        session.close();
+    }
+
+    //离线查询
+    @Test
+    public void fun5(){
+        DetachedCriteria dc=DetachedCriteria.forClass(Customer.class);
+        dc.add(Restrictions.idEq(61));
+
+        Session session= HibernateUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Criteria executableCriteria = dc.getExecutableCriteria(session);
+        List list = executableCriteria.list();
+        System.out.print(list);
         transaction.commit();
         session.close();
     }

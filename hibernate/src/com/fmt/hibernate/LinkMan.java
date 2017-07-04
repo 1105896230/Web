@@ -108,6 +108,13 @@ public class LinkMan {
         this.lkm_position = lkm_position;
     }
 
-
+    @Override
+    public String toString() {
+        return "LinkMan{" +
+                "lkm_id=" + lkm_id +
+                ", lkm_name='" + lkm_name + '\'' +
+                ", cust_id=" + cust_id +
+                '}';
+    }
 }
 
