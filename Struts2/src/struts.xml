@@ -32,10 +32,11 @@
                      name:标识结果处理的名称：与action的返回值对应
                      type属性：指定调用那个result类来处理结果默认使用转发（在继承的struts-default包中有result的配置已经设置好了）
                      标签体：填写页面的相对路径-->
-            <result name="success" type="dispatcher">/hello.jsp</result>
+            <result name="success" type="dispatcher">/showjs.jsp</result>
         </action>
     </package>
     <include file="com/fmt/b_dynamic/struts.xml"/>
     <include file="com/fmt/forward/struts.xml"/>
     <include file="com/fmt/api/struts.xml"/>
+    <include file="com/fmt/ongl/struts.xml"/>
 </struts>

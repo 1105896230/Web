@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * Created by 林其望 on 2017/7/5.
  */
-public class DemoAction extends ActionSupport implements ServletRequestAware,ModelDriven<User>{
+public class DemoAction extends ActionSupport implements ServletRequestAware{
 
     HttpServletRequest request;
     @Override
@@ -61,16 +61,16 @@ public class DemoAction extends ActionSupport implements ServletRequestAware,Mod
     }
 
 
-    public User mUser=new User();
+//    public User mUser=new User();
 //    private String name;
-    public void get(){
-        System.out.println(mUser.toString());
-    }
-
-    @Override
-    public User getModel() {
-        return mUser;
-    }
+//    public void get(){
+//        System.out.println(mUser.toString());
+//    }
+//
+//    @Override
+//    public User getModel() {
+//        return mUser;
+//    }
 
 
 

@@ -14,7 +14,7 @@
         <action name="Demo1Action_*" class="com.fmt.b_dynamic.Demo1Action"
                 method="{1}">
 
-            <result name="success" type="dispatcher">/hello.jsp</result>
+            <result name="success" type="dispatcher">/showjs.jsph</result>
         </action>
     </package>
 </struts>

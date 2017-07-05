@@ -4,9 +4,11 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <package name="api" namespace="/api" extends="struts-default">
-        <action name="DemoAction_*" class="com.fmt.api.DemoAction"
-                method="{1}">
+    <package name="ongll" namespace="/ongll" extends="struts-default">
+
+        <action name="DemoTest" class="com.fmt.ongl.DemoTest"
+                method="execute"
+                >
 
             <result name="success" type="dispatcher">/showjs.jsp</result>
         </action>
