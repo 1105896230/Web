@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!--配置动态方法调用常量
+        默认是关闭的，需要重启
+    -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+    <package name="dynamic" namespace="/dynamic" extends="struts-default">
+
+        <!--动态调用方式，使用通配符的样子-->
+        <action name="Demo1Action_*" class="com.fmt.b_dynamic.Demo1Action"
+                method="{1}">
+
+            <result name="success" type="dispatcher">/hello.jsp</result>
+        </action>
+    </package>
+</struts>

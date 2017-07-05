@@ -4,9 +4,38 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+    <!--i18:国际化，解决post提交乱码-->
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+    <!--指定访问action时的后缀名
+    如果value改为do:http://....../HelloAction.do
+    -->
+    <constant name="struts.action.extension" value="action,,"></constant>
+    <!--是否是开发模式（更多的好处可以在default.properties文件下看）
+               1,可以热加载配置（不需要重启服务）
+               2.提供了更多的错误信息，方便开发时的调试
+    -->
+    <constant name="struts.devMode" value="true"></constant>
+    <!--
+    package:将Action配置封装，就是可以在Package中配置很多action
+            name:给包起名字，起到标识作用，随便起，不能其包名重复
+            namespace属性：给action的访问路径定义一个命名空间
+            extends属性：继承一个指定包（struts-default在struts2-core jar包下有struts-default.xml中有package struts-default）
+            abstract属性：包是否为抽象的；标识性属性。标识该包不能独立运行。专门被继承
+    -->
     <package name="hello" namespace="/hello" extends="struts-default">
+        <!-- action 元素:配置action类
+                     name属性：决定了返回Action访问资源名
+                     class属性：action的完整类名
+                     method属性：指定调用action中的那个方法来处理请求-->
         <action name="HelloAction" class="com.fmt.struct.HelloAction" method="hello">
-            <result name="success">/hello.jsp</result>
+            <!--result 元素：结果配置
+                     name:标识结果处理的名称：与action的返回值对应
+                     type属性：指定调用那个result类来处理结果默认使用转发（在继承的struts-default包中有result的配置已经设置好了）
+                     标签体：填写页面的相对路径-->
+            <result name="success" type="dispatcher">/hello.jsp</result>
         </action>
     </package>
+    <include file="com/fmt/b_dynamic/struts.xml"/>
+    <include file="com/fmt/forward/struts.xml"/>
+    <include file="com/fmt/api/struts.xml"/>
 </struts>
