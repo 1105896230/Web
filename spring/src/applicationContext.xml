@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-4.2.xsd ">
+
+    <!--将User交给spring管理-->
+    <!--Bean元素:使用该元素描述需要spring容器管理的对象
+        name属性：给被管理的对象七个名字，获得对象时根据该名称获取对象,名称可以使用，可以重复
+        class属性:被管理对象的完整类名
+        id属性：与name属性一模一样，名称不可重复，不能使用特殊字符
+        尽量使用name-->
+    <!--空参创建-->
+    <bean  name="user" class="com.fmt.spring.bean.User"></bean>
+    <!--静态方法创建-->
+    <bean name="user1" class="com.fmt.spring.bean.UserFactory" factory-method="createUser"></bean>
+   <!--实例工程创建-->
+    <bean name="userfactory" class="com.fmt.spring.bean.UserFactory" ></bean>
+    <bean name="user2" factory-bean="userfactory" factory-method="createUser2"></bean>
+
+</beans>
