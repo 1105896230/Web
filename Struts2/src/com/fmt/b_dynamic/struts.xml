@@ -9,12 +9,30 @@
     -->
     <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
     <package name="dynamic" namespace="/dynamic" extends="struts-default">
-
+        <interceptors>
+            <!--注册拦截器-->
+            <interceptor name="MyInter3" class="com.fmt.intercept.MyIntercept3"></interceptor>
+            <!--注册拦截栈-->
+            <interceptor-stack name="mystack" >
+                <!-- 自定义拦截器-->
+                <interceptor-ref name="MyInter3">
+                    <!--指定那些方法不拦截-->
+                    <param name="excludeMethods">add,delete</param>
+                    <!--指定那些方法 拦截-->
+                    <param name="includeMethods">change</param>
+                </interceptor-ref>
+                <!--引用默认的20个拦截器-->
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
         <!--动态调用方式，使用通配符的样子-->
+        <default-interceptor-ref name="mystack">
+
+        </default-interceptor-ref>
         <action name="Demo1Action_*" class="com.fmt.b_dynamic.Demo1Action"
                 method="{1}">
 
-            <result name="success" type="dispatcher">/showjs.jsph</result>
+            <result name="success" type="dispatcher">/showjs.jsp</result>
         </action>
     </package>
 </struts>

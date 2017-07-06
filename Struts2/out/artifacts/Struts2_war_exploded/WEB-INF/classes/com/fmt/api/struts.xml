@@ -8,7 +8,7 @@
         <action name="DemoAction_*" class="com.fmt.api.DemoAction"
                 method="{1}">
 
-            <result name="success" type="dispatcher">/hello.jsp</result>
+            <result name="success" type="dispatcher">/showjs.jsp</result>
         </action>
     </package>
 </struts>

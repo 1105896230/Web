@@ -22,20 +22,36 @@
             extends属性：继承一个指定包（struts-default在struts2-core jar包下有struts-default.xml中有package struts-default）
             abstract属性：包是否为抽象的；标识性属性。标识该包不能独立运行。专门被继承
     -->
-    <package name="hello" namespace="/hello" extends="struts-default">
+        <package name="hello" namespace="/hello" extends="struts-default">
+            <interceptors>
+                <!--注册拦截器-->
+                <interceptor name="MyInter3" class="com.fmt.intercept.MyIntercept3"></interceptor>
+                <!--注册拦截栈-->
+                <interceptor-stack name="mystack" >
+                    <!-- 自定义拦截器-->
+                    <interceptor-ref name="MyInter3"></interceptor-ref>
+                    <!--引用默认的20个拦截器-->
+                    <interceptor-ref name="defaultStack"></interceptor-ref>
+                </interceptor-stack>
+            </interceptors>
         <!-- action 元素:配置action类
                      name属性：决定了返回Action访问资源名
                      class属性：action的完整类名
                      method属性：指定调用action中的那个方法来处理请求-->
-        <action name="HelloAction" class="com.fmt.struct.HelloAction" method="hello">
+            <default-interceptor-ref name="mystack">
+
+            </default-interceptor-ref>
+                <action name="HelloAction" class="com.fmt.struct.HelloAction" method="hello">
             <!--result 元素：结果配置
                      name:标识结果处理的名称：与action的返回值对应
                      type属性：指定调用那个result类来处理结果默认使用转发（在继承的struts-default包中有result的配置已经设置好了）
                      标签体：填写页面的相对路径-->
-            <result name="success" type="dispatcher">/hello.jsp</result>
+                    <interceptor-ref name="mystack"></interceptor-ref>
+                <result name="success">/showjs.jsp</result>
         </action>
     </package>
     <include file="com/fmt/b_dynamic/struts.xml"/>
     <include file="com/fmt/forward/struts.xml"/>
     <include file="com/fmt/api/struts.xml"/>
+    <include file="com/fmt/ongl/struts.xml"/>
 </struts>
