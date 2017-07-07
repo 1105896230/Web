@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-4.2.xsd ">
+
+    <bean  name="user" class="com.fmt.spring.bean.User">
+        <property name="name" value="tom"></property>
+        <property name="age" value="19"></property>
+        <property name="car" ref="car"></property>
+    </bean>
+
+
+    <bean name="car" class="com.fmt.spring.bean.Car">
+        <property name="name" value="bwm"></property>
+        <property name="color" value="red"></property>
+    </bean>
+
+    <bean  name="user1" class="com.fmt.spring.bean.User">
+       <constructor-arg name="name" value="tom"></constructor-arg>
+        <constructor-arg name="age" value="18"></constructor-arg>
+        <constructor-arg name="car" ref="car1"></constructor-arg>
+    </bean>
+    <bean name="car1" class="com.fmt.spring.bean.Car">
+        <constructor-arg name="name" value="bwm" index="0"></constructor-arg>
+        <constructor-arg name="color" value="red" index="1"></constructor-arg>
+    </bean>
+
+
+    <bean  name="user2" class="com.fmt.spring.bean.User">
+        <!--name属性：构造函数的参数名
+             index属性：构造函数的参数索引
+             type属性：构造函数的的参数类型-->
+        <constructor-arg name="name" value="999" index="0" type="java.lang.Integer"></constructor-arg>
+        <constructor-arg name="car" ref="car1" index="1"></constructor-arg>
+    </bean>
+
+
+    <!--p 命名空间注入-->
+    <bean  name="user3" class="com.fmt.spring.bean.User" p:age="10" p:name="jack" p:car-ref="car">
+
+    </bean>
+</beans>

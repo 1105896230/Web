@@ -14,11 +14,14 @@ public class Demo {
     public void fun1(){
 
         //1.创建容器
-        ApplicationContext ac=new ClassPathXmlApplicationContext("applicationContext.xml");
+        ClassPathXmlApplicationContext ac=new ClassPathXmlApplicationContext("applicationContext.xml");
         //2.向容器要user对象
         User user = (User) ac.getBean("user");
         //打印user
         System.out.println(user);
+
+        //容器关闭
+        ac.close();
     }
 
     @Test
@@ -38,6 +41,28 @@ public class Demo {
         ApplicationContext ac=new ClassPathXmlApplicationContext("applicationContext.xml");
         //2.向容器要user对象
         User user = (User) ac.getBean("user2");
+        //打印user
+        System.out.println(user);
+    }
+
+    @Test
+    public void fun4(){
+
+        //1.创建容器
+        ApplicationContext ac=new ClassPathXmlApplicationContext("com/fmt/spring/test/applicationContext.xml");
+        //2.向容器要user对象
+        User user = (User) ac.getBean("user1");
+        //打印user
+        System.out.println(user);
+    }
+
+    @Test
+    public void fun5(){
+
+        //1.创建容器
+        ApplicationContext ac=new ClassPathXmlApplicationContext("com/fmt/spring/test/applicationContext.xml");
+        //2.向容器要user对象
+        User user = (User) ac.getBean("user3");
         //打印user
         System.out.println(user);
     }

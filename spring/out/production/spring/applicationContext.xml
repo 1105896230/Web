@@ -11,11 +11,23 @@
         id属性：与name属性一模一样，名称不可重复，不能使用特殊字符
         尽量使用name-->
     <!--空参创建-->
-    <bean  name="user" class="com.fmt.spring.bean.User"></bean>
+    <!--scope:
+          singleton(默认值):只会存在一个实例
+          prototype:每次都会创建
+    -->
+    <!--
+    init-method 创建好对象执行某个方法，
+    destroy-mothod:销毁对象会执行方法-->
+    <bean  name="user" class="com.fmt.spring.bean.User"
+    init-method="init" destroy-method="destory">
+
+    </bean>
     <!--静态方法创建-->
     <bean name="user1" class="com.fmt.spring.bean.UserFactory" factory-method="createUser"></bean>
    <!--实例工程创建-->
     <bean name="userfactory" class="com.fmt.spring.bean.UserFactory" ></bean>
     <bean name="user2" factory-bean="userfactory" factory-method="createUser2"></bean>
 
+    <!--导入其他spring的配置文件-->
+    <import resource="com/fmt/spring/test/applicationContext.xml"></import>
 </beans>
