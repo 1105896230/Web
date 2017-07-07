@@ -1,5 +1,6 @@
 package com.fmt.spring.test;
 
+import com.fmt.spring.bean.CollectionBean;
 import com.fmt.spring.bean.User;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -62,8 +63,19 @@ public class Demo {
         //1.创建容器
         ApplicationContext ac=new ClassPathXmlApplicationContext("com/fmt/spring/test/applicationContext.xml");
         //2.向容器要user对象
-        User user = (User) ac.getBean("user3");
+        User user = (User) ac.getBean("user4");
         //打印user
         System.out.println(user);
+    }
+
+    @Test
+    public void fun7(){
+
+        //1.创建容器
+        ApplicationContext ac=new ClassPathXmlApplicationContext("com/fmt/spring/test/applicationContext.xml");
+        //2.向容器要user对象
+        CollectionBean cb = (CollectionBean) ac.getBean("cb");
+        //打印user
+        System.out.println(cb);
     }
 }

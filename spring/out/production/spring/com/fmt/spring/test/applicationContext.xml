@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans-4.2.xsd ">
 
-    <bean  name="user" class="com.fmt.spring.bean.User">
+    <bean name="user" class="com.fmt.spring.bean.User">
         <property name="name" value="tom"></property>
         <property name="age" value="19"></property>
         <property name="car" ref="car"></property>
@@ -17,8 +17,8 @@
         <property name="color" value="red"></property>
     </bean>
 
-    <bean  name="user1" class="com.fmt.spring.bean.User">
-       <constructor-arg name="name" value="tom"></constructor-arg>
+    <bean name="user1" class="com.fmt.spring.bean.User">
+        <constructor-arg name="name" value="tom"></constructor-arg>
         <constructor-arg name="age" value="18"></constructor-arg>
         <constructor-arg name="car" ref="car1"></constructor-arg>
     </bean>
@@ -28,7 +28,7 @@
     </bean>
 
 
-    <bean  name="user2" class="com.fmt.spring.bean.User">
+    <bean name="user2" class="com.fmt.spring.bean.User">
         <!--name属性：构造函数的参数名
              index属性：构造函数的参数索引
              type属性：构造函数的的参数类型-->
@@ -37,8 +37,62 @@
     </bean>
 
 
-    <!--p 命名空间注入-->
-    <bean  name="user3" class="com.fmt.spring.bean.User" p:age="10" p:name="jack" p:car-ref="car">
+    <!--p 命名空间注入
+     1.导入p名称空间 xmlns:p="http://www.springframework.org/schema/p"
+     2.使用p：属性完成注入
+          -值类型：p：属性名="值"
+          -对象类型:p:属性名-ref="bean名称"
+    -->
+    <bean name="user3" class="com.fmt.spring.bean.User" p:age="10" p:name="jack" p:car-ref="car">
 
+    </bean>
+
+    <!--
+     spel注入:sprig Expression Language spring表达式语言
+
+    -->
+    <bean name="user4" class="com.fmt.spring.bean.User">
+        <property name="name" value="#{user3.name}"></property>
+        <property name="age" value="#{user3.age}"></property>
+        <property name="car" ref="car"></property>
+    </bean>
+
+
+    <!--复杂类型注入-->
+    <!--array注入-->
+    <bean name="cb" class="com.fmt.spring.bean.CollectionBean">
+        <!--如果数组中只准备注入一个值直接使用value或ref-->
+        <!--<property name="arr" value="tom"></property>-->
+        <!--多个元素注入-->
+        <property name="arr">
+            <array>
+                <value>tom</value>
+                <value>jack</value>
+                <ref bean="user4"></ref>
+            </array>
+        </property>
+
+        <property name="list">
+            <array>
+                <value>1</value>
+                <value>2</value>
+                <ref bean="user4"></ref>
+            </array>
+        </property>
+
+        <property name="map">
+           <map>
+               <entry key="url" value="www.baidu.com"></entry>
+               <entry key="xka" value="显卡"></entry>
+               <entry key-ref="user3" value-ref="user2"></entry>
+           </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="bianma">utf-8</prop>
+                <prop key="max">8m</prop>
+            </props>
+        </property>
     </bean>
 </beans>
