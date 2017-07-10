@@ -10,7 +10,12 @@
      指定扫描这个包下的所有类的注解
      扫描包下，会扫描指定包下的所有包
     -->
-    <context:component-scan base-package="com.fmt.spring">
+    <context:component-scan base-package="com.fmt.spring.aop">
+
 
     </context:component-scan>
+    <bean name="car2" class="com.fmt.spring.aop.Car">
+        <property name="name" value="兰博基尼"></property>
+        <property name="color" value="白色"></property>
+    </bean>
 </beans>

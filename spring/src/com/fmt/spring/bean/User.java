@@ -1,8 +1,12 @@
 package com.fmt.spring.bean;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by 林其望 on 2017/7/6.
  */
+@Component("user")
+//<bean name="user" class="com.fmt.spring.bean.User/>
 public class User {
     public String name;
     public Integer age;
