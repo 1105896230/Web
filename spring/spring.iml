@@ -36,5 +36,6 @@
     </orderEntry>
     <orderEntry type="library" name="spring-aop-4.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="spring-test-4.2.4.RELEASE" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.7-bin" level="project" />
   </component>
 </module>
