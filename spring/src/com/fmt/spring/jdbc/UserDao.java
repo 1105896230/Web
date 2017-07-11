@@ -1,12 +1,13 @@
 package com.fmt.spring.jdbc;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import java.util.List;
 
 /**
  * Created by 林其望 on 2017/7/10.
  */
 public interface UserDao {
-
     void save(User user);
 
     void find(Integer id);
