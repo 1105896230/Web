@@ -7,5 +7,5 @@ import com.fmt.ssh.domain.User;
  */
 public interface UserService {
 
-    User getUserByCodePassWord();
+    User getUserByCodePassWord(String pwd);
 }

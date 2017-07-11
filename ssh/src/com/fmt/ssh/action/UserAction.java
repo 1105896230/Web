@@ -16,7 +16,7 @@ public class UserAction extends ActionSupport{
 
     @Override
     public String execute() throws Exception {
-        System.out.println(us);
+        System.out.println(us.getUserByCodePassWord("tom"));
         return super.execute();
     }
 }

@@ -60,8 +60,8 @@ public class HibernateTest {
         Transaction transaction = session.beginTransaction();
 
         User user = new User();
-        user.setUser_code("jock");
-        user.setUser_name("jock");
+        user.setUser_code("rose");
+        user.setUser_name("rose");
         user.setUser_password("1234");
         session.save(user);
         transaction.commit();

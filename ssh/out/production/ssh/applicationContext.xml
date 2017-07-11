@@ -10,6 +10,17 @@
 							http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd ">
 
 
+    <!-- 读取db.properties文件 -->
+    <context:property-placeholder location="classpath:db.properties" />
+    <!-- 配置c3p0连接池 -->
+    <bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" >
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}" ></property>
+        <property name="driverClass" value="${jdbc.driverClass}" ></property>
+        <property name="user" value="${jdbc.user}" ></property>
+        <property name="password" value="${jdbc.password}" ></property>
+    </bean>
+
+
     <!--将SessionFactory配置到spring容器中-->
     <!--加载配置方案1：任然使用外部的配置信息-->
      <!--加载配置方案2：在spring中配置hibernate的配置信息-->
@@ -17,14 +28,12 @@
         <!--<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>-->
     <!--</bean>-->
     <bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!--将连接池注入sessionFactory，Hibernate会通过连接池获得连接-->
+        <property name="dataSource" ref="dataSource"></property>
         <property name="hibernateProperties">
             <!--配置hibernate基本信息-->
             <props>
                 <!--必选配置-->
-                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
-                <prop key="hibernate.connection.url">jdbc:mysql:///jdbctest</prop>
-                <prop key="hibernate.connection.username">root</prop>
-                <prop key="hibernate.connection.password">123456</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <!--可选配置-->
                 <prop key="hibernate.show_sql">true</prop>
@@ -46,5 +55,6 @@
     <bean name="userServiceImp" class="com.fmt.ssh.service.UserServiceImp">
 
     </bean>
+
 
 </beans>
