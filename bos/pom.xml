@@ -242,11 +242,11 @@
     </build>
 
     <modules>
-        <module>../bos-utils</module>
-        <module>../bos-domain</module>
-        <module>../bos-dao</module>
-        <module>../bos-web</module>
-        <module>../bos-service</module>
+        <module>bos-dao</module>
+        <module>bos-utils</module>
+        <module>bos-domain</module>
+        <module>bos-web</module>
+        <module>bos-service</module>
     </modules>
 
 
