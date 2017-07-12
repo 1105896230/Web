@@ -11,5 +11,7 @@
 
     <artifactId>bos-web</artifactId>
 
-
+    <modules>
+        <module>../bos-domain</module>
+    </modules>
 </project>
