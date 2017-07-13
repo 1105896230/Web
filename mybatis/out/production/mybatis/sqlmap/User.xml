@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--写sql语句-->
+<!--namespace命名空间，避免不同的mapper文件底下有同样的id的sql方法-->
+<mapper namespace="test">
+    <!--通过id查询一个用户-->
+    <select id="findUserById" parameterType="Integer" resultType="com.fmt.mybatis.pojo.User">
+       select * from user where id=#{v};
+    </select>
+
+    <!--
+    #{} 表示占位符()
+    ${value} 表示字符串拼接
+    -->
+    <!--<select id="findUserByName" parameterType="String" resultType="com.fmt.mybatis.pojo.User">-->
+       <!--select * from user where username like '%${value}%';-->
+    <!--</select>-->
+    <!--防止sql注入-->
+    <select id="findUserByName" parameterType="String" resultType="com.fmt.mybatis.pojo.User">
+        select * from user where username like "%"#{v}"%";
+    </select>
+
+    <insert id="addUser" parameterType="com.fmt.mybatis.pojo.User">
+
+     <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+         select LAST_INSERT_ID()
+     </selectKey>
+      insert into user (username,birthday,address,sex) VALUE (#{username},#{birthday},#{address},#{sex})
+    </insert>
+
+    <update id="updateUserById" parameterType="com.fmt.mybatis.pojo.User">
+        update user set username=#{username},sex=#{sex},birthday=#{birthday},address=#{address}
+        where id=#{id}
+    </update>
+    
+    <delete id="deleteUserById" parameterType="Integer">
+        DELETE from user where id=#{id}
+    </delete>
+</mapper>
