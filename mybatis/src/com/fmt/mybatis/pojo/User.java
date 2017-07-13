@@ -2,6 +2,7 @@ package com.fmt.mybatis.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class User implements Serializable {
 	/**
@@ -14,7 +15,27 @@ public class User implements Serializable {
 	private Date birthday;// 生日
 	private String address;// 地址
 
+	//附加对象List
+	private List<Orders> ordersList;
 
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", sex='" + sex + '\'' +
+				", birthday=" + birthday +
+				", address='" + address + '\'' +
+				", ordersList=" + ordersList +
+				'}';
+	}
+
+	public List<Orders> getOrdersList() {
+		return ordersList;
+	}
+	public void setOrdersList(List<Orders> ordersList) {
+		this.ordersList = ordersList;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -45,13 +66,6 @@ public class User implements Serializable {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", sex=" + sex
-				+ ", birthday=" + birthday + ", address=" + address + "]";
-	}
 
-	
-	
 
 }

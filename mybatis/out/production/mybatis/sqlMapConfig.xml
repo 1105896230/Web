@@ -21,5 +21,6 @@
     <!--Mapper的位置-->
     <mappers>
         <mapper resource="sqlmap/User.xml"></mapper>
+        <mapper resource="sqlmap/Order.xml"></mapper>
     </mappers>
 </configuration>
