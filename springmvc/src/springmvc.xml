@@ -22,6 +22,32 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <!--SpringMvc的异常处理器-->
+    <bean class="com.fmt.springmvc.exception.CustomExceptionResolver"/>
+
+    <!--&lt;!&ndash;上传图片的实现类&ndash;&gt;-->
+    <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+        <!--&lt;!&ndash;上传图片的大小 单位是B&ndash;&gt;-->
+        <!--<property name="maxUploadSize" value="500000"/>-->
+    <!--</bean>-->
+
+    <!--SpringMvc的拦截器-->
+    <mvc:interceptors>
+        <!--多个拦截器-->
+        <mvc:interceptor>
+            <!--/aaa/bbb-->
+            <mvc:mapping path="/**"/>
+            <!--自定义拦截器类-->
+            <bean class="com.fmt.springmvc.interceptor.interceptor1"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <!--/aaa/bbb-->
+            <mvc:mapping path="/**"/>
+            <!--自定义拦截器类-->
+            <bean class="com.fmt.springmvc.interceptor.interceptor2"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!--注解驱动-->
     <mvc:annotation-driven conversion-service="formattingConversionService"/>
      <!--配置Conveter转换器 转换日期-->
@@ -30,7 +56,7 @@
         <property name="converters">
             <set>
                 <bean class="com.fmt.springmvc.conver.DateConver"></bean>
-            </set>
+               </set>
         </property>
     </bean>
 
