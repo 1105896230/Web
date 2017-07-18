@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--写sql语句-->
+<!--namespace命名空间，避免不同的mapper文件底下有同样的id的sql方法-->
+<mapper namespace="com.fmt.mybatis.UserMapper">
+    <!--&lt;!&ndash;通过id查询一个用户&ndash;&gt;-->
+    <!--<select id="findUserById" parameterType="Integer" resultType="com.fmt.mybatis.pojo.User">-->
+       <!--select * from user where id=#{v};-->
+    <!--</select>-->
+
+    <!--&lt;!&ndash;-->
+    <!--#{} 表示占位符()-->
+    <!--${value} 表示字符串拼接-->
+    <!--&ndash;&gt;-->
+    <!--&lt;!&ndash;<select id="findUserByName" parameterType="String" resultType="com.fmt.mybatis.pojo.User">&ndash;&gt;-->
+       <!--&lt;!&ndash;select * from user where username like '%${value}%';&ndash;&gt;-->
+    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+    <!--&lt;!&ndash;防止sql注入&ndash;&gt;-->
+    <!--<select id="findUserByName" parameterType="String" resultType="com.fmt.mybatis.pojo.User">-->
+        <!--select * from user where username like "%"#{v}"%";-->
+    <!--</select>-->
+
+    <!--<insert id="addUser" parameterType="com.fmt.mybatis.pojo.User">-->
+     <!--<selectKey keyProperty="id" resultType="Integer" order="AFTER">-->
+         <!--select LAST_INSERT_ID()-->
+     <!--</selectKey>-->
+      <!--insert into user (username,birthday,address,sex) VALUE (#{username},#{birthday},#{address},#{sex})-->
+    <!--</insert>-->
+
+    <!--<update id="updateUserById" parameterType="com.fmt.mybatis.pojo.User">-->
+        <!--update user set username=#{username},sex=#{sex},birthday=#{birthday},address=#{address}-->
+        <!--where id=#{id}-->
+    <!--</update>-->
+    <!---->
+    <!--<delete id="deleteUserById" parameterType="Integer">-->
+        <!--DELETE from user where id=#{id}-->
+    <!--</delete>-->
+
+
+    <select id="findUserByQueryVo" parameterType="com.fmt.mybatis.pojo.QueryVo" resultType="com.fmt.mybatis.pojo.User">
+        select * from user where username like "%"#{user.username}"%";
+    </select>
+
+    <select id="countUser" resultType="Integer">
+        SELECT count(*) from USER
+    </select>
+</mapper>

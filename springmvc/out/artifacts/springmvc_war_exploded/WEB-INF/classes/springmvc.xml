@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+     <!--扫描@Controler @Service-->
+    <context:component-scan base-package="com.fmt.springmvc"></context:component-scan>
+
+
+    <!--&lt;!&ndash;处理器映射器&ndash;&gt;-->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>-->
+
+    <!--&lt;!&ndash;处理器引射器&ndash;&gt;-->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>-->
+
+    <!--视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--SpringMvc的异常处理器-->
+    <bean class="com.fmt.springmvc.exception.CustomExceptionResolver"/>
+
+    <!--&lt;!&ndash;上传图片的实现类&ndash;&gt;-->
+    <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+        <!--&lt;!&ndash;上传图片的大小 单位是B&ndash;&gt;-->
+        <!--<property name="maxUploadSize" value="500000"/>-->
+    <!--</bean>-->
+
+    <!--注解驱动-->
+    <mvc:annotation-driven conversion-service="formattingConversionService"/>
+     <!--配置Conveter转换器 转换日期-->
+    <bean id="formattingConversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <!--配置多个转换器-->
+        <property name="converters">
+            <set>
+                <bean class="com.fmt.springmvc.conver.DateConver"></bean>
+            </set>
+        </property>
+    </bean>
+
+</beans>
