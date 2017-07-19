@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/e3common/e3-common.iml" filepath="$PROJECT_DIR$/e3common/e3-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e3manager/e3-manager.iml" filepath="$PROJECT_DIR$/e3manager/e3-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e3manager/e3managerdao/e3-manager-dao.iml" filepath="$PROJECT_DIR$/e3manager/e3managerdao/e3-manager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e3manager/e3managerinterface/e3-manager-interface.iml" filepath="$PROJECT_DIR$/e3manager/e3managerinterface/e3-manager-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e3manager/e3managerpojo/e3-manager-pojo.iml" filepath="$PROJECT_DIR$/e3manager/e3managerpojo/e3-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e3manager/e3managerservice/e3-manager-service.iml" filepath="$PROJECT_DIR$/e3manager/e3managerservice/e3-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e3manager/e3managerweb/e3-manager-web.iml" filepath="$PROJECT_DIR$/e3manager/e3managerweb/e3-manager-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/e3parent.iml" filepath="$PROJECT_DIR$/e3parent.iml" />
     </modules>
   </component>
