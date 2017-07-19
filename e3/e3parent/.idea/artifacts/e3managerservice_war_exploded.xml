@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="e3managerservice:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/e3managerservice_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="e3managerservice/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="e3managerservice" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
