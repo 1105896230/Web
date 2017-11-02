@@ -8,6 +8,6 @@
     <file url="file://$PROJECT_DIR$/e3manager/e3managerinterface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/e3manager/e3managerpojo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/e3manager/e3managerservice" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/e3manager/e3managerweb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/e3managerweb" charset="UTF-8" />
   </component>
 </project>

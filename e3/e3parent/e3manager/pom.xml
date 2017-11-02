@@ -16,7 +16,6 @@
         <module>e3managerdao</module>
         <module>e3managerinterface</module>
         <module>e3managerservice</module>
-        <module>e3managerweb</module>
     </modules>
 
     <dependencies>
