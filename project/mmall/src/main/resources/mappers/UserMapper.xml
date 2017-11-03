@@ -184,7 +184,12 @@
 
   <select id="checkPassword" parameterType="map" resultType="int">
     SELECT COUNT(1) FROM mmall_user
-    WHERE userId=#{userId}
+    WHERE id=#{userId}
     and password=#{password}
+  </select>
+  <select id="checkEmailByUserId" parameterType="map" resultType="int">
+    SELECT COUNT(1) FROM mmall_user
+    WHERE id!=#{userId}
+    and emaill=#{emaill}
   </select>
 </mapper>
