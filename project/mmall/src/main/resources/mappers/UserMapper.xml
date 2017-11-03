@@ -19,7 +19,7 @@
     id, username, password, email, phone, question, answer, role, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from mmall_user
     where id = #{id,jdbcType=INTEGER}
@@ -151,7 +151,7 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="checkUsername" parameterType="com.mmall.pojo.User">
+  <select id="checkUsername" parameterType="com.mmall.pojo.User" resultType="int">
     SELECT COUNT(1) FROM mmall_user
     WHERE username=#{username}
   </select>
@@ -162,9 +162,9 @@
     where username = #{username}
     and password=#{password}
   </select>
-  <select id="checkEmail"  parameterType="com.mmall.pojo.User">
+  <select id="checkEmail"  parameterType="com.mmall.pojo.User" resultType="int">
     SELECT COUNT(1) FROM mmall_user
-    WHERE emaill=#{emaill}
+    WHERE email=#{email}
   </select>
   <select id="selectQuestionByUserName" parameterType="com.mmall.pojo.User">
     SELECT question FROM mmall_user
@@ -176,7 +176,7 @@
     and question=#{question}
     and answer=#{answer}
   </select>
-  <update id="updatePasswordByUser" parameterMap="map" >
+  <update id="updatePasswordByUser" parameterType="map" >
     UPDATE mmall_user
     SET password=#{passwordnew},update_time=now()
     WHERE  username=#{username}
