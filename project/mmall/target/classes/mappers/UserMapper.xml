@@ -162,29 +162,4 @@
     where username = #{username}
     and password=#{password}
   </select>
-  <select id="checkEmail"  parameterType="com.mmall.pojo.User">
-    SELECT COUNT(1) FROM mmall_user
-    WHERE emaill=#{emaill}
-  </select>
-  <select id="selectQuestionByUserName" parameterType="com.mmall.pojo.User">
-    SELECT question FROM mmall_user
-    WHERE username=#{username}
-  </select>
-  <select id="checkAnswer" parameterType="map" resultType="int">
-    SELECT COUNT(1) FROM mmall_user
-    WHERE username=#{username}
-    and question=#{question}
-    and answer=#{answer}
-  </select>
-  <update id="updatePasswordByUser" parameterMap="map" >
-    UPDATE mmall_user
-    SET password=#{passwordnew},update_time=now()
-    WHERE  username=#{username}
-  </update>
-
-  <select id="checkPassword" parameterType="map" resultType="int">
-    SELECT COUNT(1) FROM mmall_user
-    WHERE userId=#{userId}
-    and password=#{password}
-  </select>
 </mapper>
