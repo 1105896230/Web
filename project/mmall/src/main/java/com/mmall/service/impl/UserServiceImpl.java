@@ -168,4 +168,11 @@ public class UserServiceImpl implements IUserService{
 
     }
 
+    public ServerResponse<User> checkAdminRole(User user){
+        if (user!=null&&user.getRole()==Const.Role.ROLE_ADMIN){
+            return ServerResponse.createBySuccess();
+        }else {
+            return ServerResponse.createByError();
+        }
+    }
 }
