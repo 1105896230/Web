@@ -122,4 +122,7 @@
     FROM  mmall_category
     WHERE parent_id=#{parentId}
   </select>
+
+
+
 </mapper>
